@@ -65,28 +65,22 @@ class AmazonRoute53 extends CFRuntime
 	/**
 	 * Constructs a new instance of this class.
 	 *
-	 * @param string $key (Optional) Your Amazon API Key. If blank, it will look for the <AWS_KEY> constant.
-	 * @param string $secret_key (Optional) Your Amazon API Secret Key. If blank, it will look for the <AWS_SECRET_KEY> constant.
-	 * @return boolean A value of <code>false</code> if no valid values are set, otherwise <code>true</code>.
+   * @param array $options (Optional) An associative array of parameters that can have the following keys: <ul>
+   *  <li><code>certificate_authority</code> - <code>boolean</code> - Optional - Determines which Cerificate Authority file to use. A value of boolean <code>false</code> will use the Certificate Authority file available on the system. A value of boolean <code>true</code> will use the Certificate Authority provided by the SDK. Passing a file system path to a Certificate Authority file (chmodded to <code>0755</code>) will use that. Leave this set to <code>false</code> if you're not sure.</li>
+   *  <li><code>credentials</code> - <code>string</code> - Optional - The name of the credential set to use for authentication.</li>
+   *  <li><code>default_cache_config</code> - <code>string</code> - Optional - This option allows a preferred storage type to be configured for long-term caching. This can be changed later using the <set_cache_config()> method. Valid values are: <code>apc</code>, <code>xcache</code>, or a file system path such as <code>./cache</code> or <code>/tmp/cache/</code>.</li>
+   *  <li><code>key</code> - <code>string</code> - Optional - Your AWS key, or a session key. If blank, the default credential set will be used.</li>
+   *  <li><code>secret</code> - <code>string</code> - Optional - Your AWS secret key, or a session secret key. If blank, the default credential set will be used.</li>
+   *  <li><code>token</code> - <code>string</code> - Optional - An AWS session token.</li></ul>
+   * @return void
 	 */
-	public function __construct($key = null, $secret_key = null)
+	public function __construct(array $options = array())
 	{
 		$this->api_version = '2011-05-05';
 		$this->hostname = self::DEFAULT_URL;
-
 		$this->base_xml = '<?xml version="1.0" encoding="UTF-8"?><%s xmlns="https://route53.amazonaws.com/doc/' . $this->api_version . '/"></%1$s>';
 
-		if (!$key && !defined('AWS_KEY'))
-		{
-			throw new Route53_Exception('No account key was passed into the constructor, nor was it set in the AWS_KEY constant.');
-		}
-
-		if (!$secret_key && !defined('AWS_SECRET_KEY'))
-		{
-			throw new Route53_Exception('No account secret was passed into the constructor, nor was it set in the AWS_SECRET_KEY constant.');
-		}
-
-		return parent::__construct($key, $secret_key);
+		return parent::__construct($options);
 	}
 
 	/*%******************************************************************************************%*/
