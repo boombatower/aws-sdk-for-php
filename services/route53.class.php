@@ -460,7 +460,7 @@ class AmazonRoute53 extends CFRuntime
 	 * @return CFResponse A <CFResponse> object containing a parsed HTTP response.
 	 * @link http://docs.amazonwebservices.com/Route53/latest/APIReference/API_ListHostedZones.html GET ListHostedZones
 	 */
-	public function list_hosted_zone($opt = null)
+	public function list_hosted_zones($opt = null)
 	{
 		if (!$opt) $opt = array();
 		$opt['query_string'] = array();
