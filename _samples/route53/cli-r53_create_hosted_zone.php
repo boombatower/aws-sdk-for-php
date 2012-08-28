@@ -45,14 +45,14 @@
 
 	// Include the SDK
 	require_once '../../sdk.class.php';
-	
+
 /*%******************************************************************************************%*/
 // CREATE HOSTED ZONE
-	
+
 	$route53 = new AmazonRoute53();
-	
+
 	// Sample request XML: http://docs.amazonwebservices.com/Route53/latest/APIReference/API_CreateHostedZone.html
-	
+
 	// Send request!
 	$response = $route53->create_hosted_zone('example.com.', 'myUniqueIdentifier', array(
 		'Comment' => 'This is my first hosted zone.'
@@ -60,4 +60,3 @@
 
 	// Display
 	print_r($response);
-	

@@ -45,12 +45,12 @@
 
 	// Include the SDK
 	require_once '../../sdk.class.php';
-	
+
 /*%******************************************************************************************%*/
 // CHANGE RESOURCE RECORD SETS
-	
+
 	$route53 = new AmazonRoute53();
-	
+
 	// You should replace this with a real Zone ID
 	$zone_id = 'Z1PA6795UKMFR9';
 
@@ -70,7 +70,7 @@
 						)
 					)
 				)
-			),	
+			),
 			array(
 				'Action' => 'DELETE',
 				'ResourceRecordSet' => array(
@@ -97,11 +97,11 @@
 					)
 				)
 			)
-		) 
+		)
 	);
-	
+
 	// Send request!
 	$response = $route53->change_rrset($zone_id, $change_batch);
-	
+
 	// Display
 	print_r($response);

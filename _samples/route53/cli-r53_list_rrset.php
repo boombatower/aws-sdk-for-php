@@ -45,15 +45,15 @@
 
 	// Include the SDK
 	require_once '../../sdk.class.php';
-	
+
 /*%******************************************************************************************%*/
 // LIST RESOURCE RECORD SETS
 
 	$route53 = new AmazonRoute53();
-	
+
 	// You should replace this with a real Zone ID
 	$zone_id = 'Z1PA6795UKMFR9';
-	
+
 	// Possible options. Reference: http://docs.amazonwebservices.com/Route53/latest/APIReference/API_ListResourceRecordSets.html
 	$opt = array(
 		'Name' => 'example.com',
@@ -61,9 +61,9 @@
 		'Identifier' => 'SetIdentifier',
 		'MaxItems' => 10 // default: 100
 	);
-	
+
 	// Send request!
 	$response = $route53->list_rrset($zone_id); // Pass only the zone ID
-	
+
 	// Display
 	print_r($response);

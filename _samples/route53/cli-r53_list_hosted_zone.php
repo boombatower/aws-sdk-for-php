@@ -45,20 +45,20 @@
 
 	// Include the SDK
 	require_once '../../sdk.class.php';
-	
+
 /*%******************************************************************************************%*/
 // LIST HOSTED ZONE
 
 	$route53 = new AmazonRoute53();
-	
+
 	// Possible options. Reference: http://docs.amazonwebservices.com/Route53/latest/APIReference/API_ListHostedZones.html
 	$opt = array(
 		'Marker' => 'Z2EUQ1WTGCTBG2', // Indicates where to begin in your list of hosted zones
 		'MaxItems' => 10 // default: 100
 	);
-	
+
 	// Send request!
 	$response = $route53->list_hosted_zone(); // Don't pass option
-	
+
 	// Display
 	print_r($response);

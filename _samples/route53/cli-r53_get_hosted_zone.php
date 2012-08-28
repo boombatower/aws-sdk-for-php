@@ -45,18 +45,17 @@
 
 	// Include the SDK
 	require_once '../../sdk.class.php';
-	
+
 /*%******************************************************************************************%*/
 // GET HOSTED ZONE
-	
+
 	$route53 = new AmazonRoute53();
-	
+
 	// You should replace this with a real Zone ID
 	$zone_id = 'Z1PA6795UKMFR9';
-		
-	// Send request!	
+
+	// Send request!
 	$response = $route53->get_hosted_zone($zone_id);
-	
+
 	// Display
 	print_r($response);
-	

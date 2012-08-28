@@ -45,18 +45,17 @@
 
 	// Include the SDK
 	require_once '../../sdk.class.php';
-	
+
 /*%******************************************************************************************%*/
 // GET CHANGE STATUS
-	
+
 	$route53 = new AmazonRoute53();
-	
-	// You should replace this with a real Change ID	
+
+	// You should replace this with a real Change ID
 	$change_id = 'C2682N5HXP0BZ4';
-	
-	// Send request!	
+
+	// Send request!
 	$response = $route53->get_change_status($change_id);
-	
+
 	// Display
 	print_r($response);
-	
